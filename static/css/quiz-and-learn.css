@@ -1,3 +1,6 @@
+/* Importing a modern Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 /* Basic reset for margin and padding */
 * {
     margin: 0;
@@ -7,128 +10,91 @@
 
 /* Centering the container in the body */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f4f8;
+    background: linear-gradient(135deg, #4A00E0, #8E2DE2); /* Purple gradient background */
+    color: #f5f5f5;
     overflow: hidden; /* Prevents the body from scrolling */
 }
 
-/* Main scrollable container */
+/* Main container styling */
 .container {
     width: 90%;
-    max-width: 800px;
-    height: 85vh; /* Sets container height relative to viewport */
-    padding: 20px;
+    max-width: 600px;
+    padding: 30px;
     background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    overflow-y: auto; /* Enables scrolling for overflowing content */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
 }
 
 /* Header styling */
 h1 {
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: 600;
     color: #333;
     margin-bottom: 20px;
-    text-align: center;
 }
 
 /* Input field styling */
 input[type="text"] {
-    padding: 10px;
+    padding: 12px;
     width: 100%;
+    max-width: 500px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #8E2DE2; /* Matches gradient */
 }
 
 /* Button styling */
 button {
-    padding: 10px 15px;
-    margin: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    background-color: #4CAF50;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #34D399, #3B82F6); /* Green to blue gradient */
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    width: 100%; /* Make buttons full-width */
-    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 500px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Response and quiz sections */
+button:active {
+    transform: scale(0.97);
+}
+
+/* Response and quiz sections styling */
 .response, .quiz {
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    background-color: #f8f9fc;
+    border-radius: 10px;
     padding: 20px;
     font-size: 1em;
     line-height: 1.6;
     color: #333;
-    overflow-y: auto; /* Allow scrolling within response for long content */
-    max-height: 60vh; /* Set max height to control the overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    margin-bottom: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Scrollbar styling for response and quiz sections */
-.response::-webkit-scrollbar, .quiz::-webkit-scrollbar {
-    width: 8px;
-}
-
-.response::-webkit-scrollbar-track, .quiz::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.response::-webkit-scrollbar-thumb, .quiz::-webkit-scrollbar-thumb {
-    background-color: #cccccc;
-    border-radius: 10px;
-}
-
-/* Quiz question styling */
-.quiz .question {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-/* Quiz options styling */
-.quiz .options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Adds spacing between options */
-    margin-top: 10px;
-}
-
-.quiz .options button {
-    padding: 10px;
-    text-align: left;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.quiz .options button:hover {
-    background-color: #0056b3;
-}
-
-/* Feedback for correct and incorrect answers */
-.quiz p.correct {
-    color: green;
-    font-weight: bold;
-}
-
-.quiz p.incorrect {
-    color: red;
-    font-weight: bold;
+.response:hover, .quiz:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

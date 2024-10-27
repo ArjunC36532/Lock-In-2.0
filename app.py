@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Set up OpenAI API key from environment variable
-openai.api_key = os.getenv('API_KEY')
+openai.api_key =openai.api_key = os.getenv('API_KEY')
 
 # Define a database model for storing URLs
 class Link(db.Model):

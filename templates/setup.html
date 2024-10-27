@@ -1,40 +1,42 @@
 {% extends 'base.html' %}
 
-{% block css%}
+{% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/setup.css') }}">
-{%endblock%}
+{% endblock %}
 
 {% block head %}
 <title>Setup</title>
 {% endblock %}
 
 {% block body %}
-<h2>Enter a Link:</h2>
-<form method="POST" action="/setup">
-    <label>Website URL:</label>
-    <input type="url" id="link" name="link" placeholder="https://example.com" required>
-    <button type="submit">Add URL</button>
-</form>
-
-<table>
-    <tr>
-        <th>Links</th>
-    </tr>
-        {% for link in links %}
+<div class="container">
+    <h2>Enter a Link:</h2>
+    
+    <!-- Form to add a URL -->
+    <form method="POST" action="/setup" class="link-form">
+        <label for="link">Website URL:</label>
+        <input type="url" id="link" name="link" placeholder="https://example.com" required>
+        <button type="submit" class="button add-button">Add URL</button>
+    </form>
+    
+    <!-- Table to display links -->
+    <table class="link-table">
         <tr>
-            <td>{{link}}</td>
+            <th>Links</th>
         </tr>
-        {%endfor%}
-</table>
+        <tr>
+            <td>Time to Lock In</td> <!-- Placeholder text updated -->
+        </tr>
+    </table>
 
-<form id="deleteLinkForm" method="POST" action="/delete_last_link">
-    <button type="submit">Delete Last Link</button>
-</form>
+    <!-- Button to delete last link -->
+    <form id="deleteLinkForm" method="POST" action="/delete_last_link" class="button-form">
+        <button type="submit" class="button delete-button">Delete Last Link</button>
+    </form>
 
- <!-- Button to start functionality -->
- <form id="startForm" method="POST" action="/start">
-    <button type="submit">Start</button>
-</form>
-
-
+    <!-- Button to start functionality -->
+    <form id="startForm" method="POST" action="/start" class="button-form">
+        <button type="submit" class="button start-button">Start</button>
+    </form>
+</div>
 {% endblock %}
