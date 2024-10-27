@@ -1,44 +1,72 @@
+/* Importing a modern Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 50px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #4A00E0, #8E2DE2); /* Purple gradient background */
+    color: #f5f5f5; /* Light text color for contrast */
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    background-color: #ffffff;
+    padding: 40px 60px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft shadow */
+    max-width: 500px;
+    text-align: center;
 }
 
 h1 {
-    font-size: 48px; /* Larger font size for a prominent welcome label */
-    font-weight: bold;
-    color: #333; /* Darker color for contrast */
-    margin-bottom: 50px; /* Space below the header */
+    font-size: 48px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    letter-spacing: 1px; /* Slight letter spacing for elegance */
 }
 
 .button-container {
     display: flex;
-    gap: 20px; /* Space between buttons */
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 50px; /* Space above the image */
 }
 
 .button {
-    background-color: yellow;
-    color: #333; /* Text color for contrast */
+    background: linear-gradient(135deg, #34D399, #3B82F6); /* Green to blue gradient */
+    color: #ffffff;
     border: none;
     padding: 15px 30px;
-    font-size: 18px; /* Slightly larger font for visibility */
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px; /* Fully rounded for a pill shape */
     cursor: pointer;
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
-    width: 150px; /* Fixed width for symmetry */
-    height: 70px; /* Fixed height for symmetry */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Elevated shadow for buttons */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button:hover {
-    background-color: #FFD700; /* Darker yellow on hover */
+    transform: scale(1.05); /* Slight scale-up effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Larger shadow on hover */
 }
 
+.button:active {
+    transform: scale(0.97); /* Slightly shrink on click */
+}
+
+/* Styling for the bottom-left image */
+.bottom-left-image {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 10px; /* Rounded corners for image */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
