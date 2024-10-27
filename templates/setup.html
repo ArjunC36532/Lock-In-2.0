@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block css%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/setup.css') }}">
+{%endblock%}
+
+{% block head %}
+<title>Setup</title>
+{% endblock %}
+
+{% block body %}
+<h2>Enter a Link:</h2>
+<form method="POST" action="/setup">
+    <label>Website URL:</label>
+    <input type="url" id="link" name="link" placeholder="https://example.com" required>
+    <button type="submit">Add URL</button>
+</form>
+
+<table>
+    <tr>
+        <th>Links</th>
+    </tr>
+        {% for link in links %}
+        <tr>
+            <td>{{link}}</td>
+        </tr>
+        {%endfor%}
+</table>
+
+<form id="deleteLinkForm" method="POST" action="/delete_last_link">
+    <button type="submit">Delete Last Link</button>
+</form>
+
+ <!-- Button to start functionality -->
+ <form id="startForm" method="POST" action="/start">
+    <button type="submit">Start</button>
+</form>
+
+
+{% endblock %}

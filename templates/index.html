@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block head %}
+<title>Welcome Page</title>
+{% endblock %}
+
+{% block body %}
+<div class="button-container">
+    <h1>Welcome!</h1>ß
+    <a href="/setup">
+        <button class="button">Lock-In</button>
+    </a>
+    <a href="/quiz-and-learn">
+        <button class="button">Learn</button>
+    </a>
+</div>
+{% endblock %}
+ß

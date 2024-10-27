@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz-and-learn.css') }}">
+{% endblock %}
+
+{% block head %}
+<title>Learn with ChatGPT</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>What do you want to learn?</h1>
+    <input type="text" id="topicInput" placeholder="Enter a topic" />
+    <button onclick="getResponse()">Teach Me</button>
+    <button onclick="generateQuiz()" id="quizButton" style="display: none;">Quiz Me</button>
+
+    <div id="response" class="response"></div>
+    <div id="quiz" class="quiz"></div>
+</div>
+
+<script>
+    // JavaScript functions as provided for interaction
+    let questions = [];
+    let currentQuestionIndex = 0;
+
+    async function getResponse() {
+        const topic = document.getElementById("topicInput").value;
+        if (!topic) {
+            alert("Please enter a topic to learn about.");
+            return;
+        }
+        const responseDiv = document.getElementById("response");
+        const quizButton = document.getElementById("quizButton");
+        responseDiv.innerHTML = "Loading...";
+
+        const response = await fetch("/learn", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ topic: topic })
+        });
+
+        const data = await response.json();
+        responseDiv.innerHTML = data.error ? "An error occurred: " + data.error : `<strong>Response:</strong><br>${data.response}`;
+        quizButton.style.display = "inline";
+    }
+
+    async function generateQuiz() {
+        const topic = document.getElementById("topicInput").value;
+        const quizDiv = document.getElementById("quiz");
+
+        if (!topic) {
+            alert("Please enter a topic first.");
+            return;
+        }
+
+        quizDiv.innerHTML = "Generating quiz...";
+
+        const response = await fetch("/generate-quiz", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ topic: topic })
+        });
+
+        const data = await response.json();
+        questions = data.questions;
+        currentQuestionIndex = 0;
+        displayQuestion();
+    }
+
+    function displayQuestion() {
+        const quizDiv = document.getElementById("quiz");
+        const questionData = questions[currentQuestionIndex];
+
+        quizDiv.innerHTML = `
+            <strong>Question ${currentQuestionIndex + 1}:</strong> ${questionData.question}<br><br>
+            ${questionData.options.map((option, index) => `<button onclick="checkAnswer('${String.fromCharCode(65 + index)}')">${option}</button><br>`).join('')}
+        `;
+    }
+
+    function checkAnswer(selectedAnswer) {
+        const quizDiv = document.getElementById("quiz");
+        const questionData = questions[currentQuestionIndex];
+        quizDiv.innerHTML += selectedAnswer === questionData.correct_answer
+            ? "<p style='color: green;'><strong>Correct!</strong></p>"
+            : `<p style='color: red;'><strong>Incorrect!</strong> The correct answer was ${questionData.correct_answer}.</p>`;
+
+        setTimeout(() => {
+            currentQuestionIndex++;
+            currentQuestionIndex < questions.length ? displayQuestion() : quizDiv.innerHTML += "<p><strong>Quiz Completed!</strong></p>";
+        }, 1500);
+    }
+</script>
+
+{%endblock %}

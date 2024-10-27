@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 48px; /* Larger font size for a prominent welcome label */
+    font-weight: bold;
+    color: #333; /* Darker color for contrast */
+    margin-bottom: 50px; /* Space below the header */
+}
+
+.button-container {
+    display: flex;
+    gap: 20px; /* Space between buttons */
+}
+
+.button {
+    background-color: yellow;
+    color: #333; /* Text color for contrast */
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px; /* Slightly larger font for visibility */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    width: 150px; /* Fixed width for symmetry */
+    height: 70px; /* Fixed height for symmetry */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: #FFD700; /* Darker yellow on hover */
+}
+
